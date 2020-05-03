@@ -75,9 +75,9 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="home.html">home</a></li>
+                                        <li><a href="#">home</a></li>
                                         <li><a href="#">Hospitals</a></li>
-                                        <li><a class="active"  href="doctor.html">Doctor</a></li>
+                                        <li><a class="active"  href="#">Doctor</a></li>
                                         <li><a href="#">Patient</a></li>
                                         <li><a href="#">Payment</a></li>
                                     </ul>
@@ -108,7 +108,7 @@
                 <div class="col-xl-12">
                     <div class="bradcam_text">
                         <h3>Doctors</h3>
-                        <p><a href="home.html">Home /</a> Doctors</p>
+                        <p><a href="#">Home /</a> Doctors</p>
                     </div>
                 </div>
             </div>
@@ -122,53 +122,194 @@
     		<div class="col-md-3"></div>
     		<div class="col-md-6">
     			<h1 class="text-center">REGISTER</h1><br>
+
     			<!--Form row start-->
-				<form action="table.html">
-    			<label class="label col-md-3 control-label">Doctor ID :</label>
-    			<div class="col-md-9">
-    				<input type="text" class="form-control" id="docID" name="docID" placeholder="Doctor ID" maxlength="6" required>
-    			</div><br>
-    			<!--Form row end-->
-    			<!--Form row start-->
-    			<label class="label col-md-3 control-label">Doctor Name :</label>
-    			<div class="col-md-9">
-    				<input type="text" class="form-control" id="docName" name="Doctor Name" placeholder="Doctor Name" required>
-    			</div><br>
-    			<!--Form row end-->
-    			<!--Form row start-->
-    			<label class="label col-md-3 control-label">Specialization :</label>
-    			<div class="col-md-9">
-    				<select class="form-control" required>
-    					<option>-None-</option>
-    					<option>CARDILOGIST</option>
-    					<option>NEUROLOGY</option>
-    					<option>DERMATOLOGIST</option>
-    					<option>SURGEON</option>
-    					<option>OPHTHALMOLOGIST</option>
-    				</select><br>
-    			</div><br><br>
-    			<!--Form row end-->
-    			<!--Form row start-->
-    			<label class="label col-md-3 control-label">Contact No :</label>
-    			<div class="col-md-9">
-    				<input type="tel" class="form-control" id="contactNo" name="Contact No" placeholder="Contact No" maxlength="10" required pattern="[0]{1}[0-9]{9}">
-    			</div><br>
-    			<!--Form row end-->
-    			<!--Form row start-->
-    			<label class="label col-md-3 control-label">Password :</label>
-    			<div class="col-md-9">
-    				<input type="Password" class="form-control" id="password" name="Password" placeholder="Password" required>
-    				<small>Password must be <b>6</b> characters !</small>
-    			</div><br><br>
-    			<!--Form row end-->
-    			<!--&nbsp; &nbsp;<a href="table.html" id="submit" class="boxed-btn31">Submit</a><br><br><br><br>-->
-				&nbsp; &nbsp;<button type="submit" id="submit" class="boxed-btn31">Submit</button>
+				<form id="formDoctor">
+                    <label class="label col-md-3 control-label" id="lbldocID">Doctor ID :</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" id="docID" name="docID" placeholder="Doctor ID" maxlength="6" required>
+                    </div><br>
+                    <!--Form row end-->
+
+                    <!--Form row start-->
+                    <label class="label col-md-3 control-label" id="lbldocName">Doctor Name :</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" id="docName" name="docName" placeholder="Doctor Name" required>
+                    </div><br>
+                    <!--Form row end-->
+
+                    <!--Form row start-->
+                    <label class="label col-md-3 control-label" id="lbldocSpecialization">Specialization :</label>
+                    <div class="col-md-9">
+                        <select class="form-control" id="ddlSpecialization" name="ddlSpecialization" required>
+                            <option value="0">- Select Specialization -</option>
+                            <option value="1">CARDILOGIST</option>
+                            <option value="2">NEUROLOGY</option>
+                            <option value="3">DERMATOLOGIST</option>
+                            <option value="4">SURGEON</option>
+                            <option value="5">OPHTHALMOLOGIST</option>
+                        </select><br>
+                    </div><br>
+                    <!--Form row end-->
+
+                    <!--Form row start-->
+                    <label class="label col-md-3 control-label" id="lbldocContactNo">Contact No :</label>
+                    <div class="col-md-9">
+                        <input type="tel" class="form-control" id="docContactNo" name="docContactNo" placeholder="Contact No" maxlength="10" required pattern="[0]{1}[0-9]{9}">
+                    </div><br>
+                    <!--Form row end-->
+
+                    <!--Form row start-->
+                    <label class="label col-md-3 control-label" id="lbldocPassword">Password :</label>
+                    <div class="col-md-9">
+                        <input type="Password" class="form-control" id="docPassword" name="docPassword" placeholder="Password" maxlength="6" required>
+                        <small>Password must be <b>6</b> characters !</small>
+                    </div><br>
+                    <!--Form row end-->
+                    
+                    <!--<div id="alertSuccess" class="alert alert-success"></div>
+                    <div id="alertError" class="alert alert-danger"></div><br>-->
+
+                    <!--&nbsp; &nbsp;<button type="submit" id="btnsubmit" class="boxed-btn31">Save</button>-->
+                    &nbsp; &nbsp;<input id="btnsubmit" name="btnsubmit" type="button" value="Save" class="boxed-btn31">
+                    &nbsp; &nbsp;<input type="hidden" id="hidbtnsubmit" name="hidbtnsubmit" value="">
 				</form>
     		</div>
     		<div class="col-md-3"></div>
     	</div>
     </div><br><br>
     <!--Form End-->
+
+    <div class="container">
+        <h2>All Doctors</h2>
+        <ul id="doctors"></ul>
+    </div><br>
+    
+
+    <!--Table Start-->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <table class="table" class="makeEditable" id="tableDoctor">
+                    <thead>
+                      <tr>
+                        <th>Doctor ID</th>
+                        <th>Doctor Name</th>
+                        <th>Specialization</th>
+                        <th>Contact No</th>
+                        <th name="buttons"></th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+
+                      <tr>
+                        <td>Default</td>
+                        <td>Defaultson</td>
+                        <td>def@somemail.com</td>
+                        <td>0778213648</td>
+                        <td name="buttons">
+                            <div class="btn-group pull-right">
+                                <button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);"><span class="glyphicon glyphicon-pencil"> </span></button>
+                                <button id="bElim" type="button" class="btn btn-sm btn-default" onclick="rowElim(this);"><span class="glyphicon glyphicon-trash"> </span></button>
+                                <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowAcep(this);"><span class="glyphicon glyphicon-ok"> </span></button>
+                                <button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowCancel(this);"><span class="glyphicon glyphicon-remove"> </span></button>
+                            </div>
+                        </td>
+                      </tr>      
+                      <tr class="success">
+                        <td>Success</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                        <td>0778213648</td>
+                        <td name="buttons">
+                            <div class="btn-group pull-right">
+                                <button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);"><span class="glyphicon glyphicon-pencil"> </span></button>
+                                <button id="bElim" type="button" class="btn btn-sm btn-default" onclick="rowElim(this);"><span class="glyphicon glyphicon-trash"> </span></button>
+                                <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowAcep(this);"><span class="glyphicon glyphicon-ok"> </span></button>
+                                <button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowCancel(this);"><span class="glyphicon glyphicon-remove"> </span></button>
+                            </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Default</td>
+                        <td>Defaultson</td>
+                        <td>def@somemail.com</td>
+                        <td>0778213648</td>
+                        <td name="buttons">
+                            <div class="btn-group pull-right">
+                                <button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);"><span class="glyphicon glyphicon-pencil"> </span></button>
+                                <button id="bElim" type="button" class="btn btn-sm btn-default" onclick="rowElim(this);"><span class="glyphicon glyphicon-trash"> </span></button>
+                                <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowAcep(this);"><span class="glyphicon glyphicon-ok"> </span></button>
+                                <button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowCancel(this);"><span class="glyphicon glyphicon-remove"> </span></button>
+                            </div>
+                        </td>
+                      </tr>      
+                      <tr class="success">
+                        <td>Success</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                        <td>0778213648</td>
+                        <td name="buttons">
+                            <div class="btn-group pull-right">
+                                <button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);"><span class="glyphicon glyphicon-pencil"> </span></button>
+                                <button id="bElim" type="button" class="btn btn-sm btn-default" onclick="rowElim(this);"><span class="glyphicon glyphicon-trash"> </span></button>
+                                <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowAcep(this);"><span class="glyphicon glyphicon-ok"> </span></button>
+                                <button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowCancel(this);"><span class="glyphicon glyphicon-remove"> </span></button>
+                            </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Default</td>
+                        <td>Defaultson</td>
+                        <td>def@somemail.com</td>
+                        <td>0778213648</td>
+                        <td name="buttons">
+                            <div class="btn-group pull-right">
+                                <button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);"><span class="glyphicon glyphicon-pencil"> </span></button>
+                                <button id="bElim" type="button" class="btn btn-sm btn-default" onclick="rowElim(this);"><span class="glyphicon glyphicon-trash"> </span></button>
+                                <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowAcep(this);"><span class="glyphicon glyphicon-ok"> </span></button>
+                                <button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowCancel(this);"><span class="glyphicon glyphicon-remove"> </span></button>
+                            </div>
+                        </td>
+                      </tr>      
+                      <tr class="success">
+                        <td>Success</td>
+                        <td>Doe</td>
+                        <td>john@example.com</td>
+                        <td>0778213648</td>
+                        <td name="buttons">
+                            <div class="btn-group pull-right">
+                                <button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);"><span class="glyphicon glyphicon-pencil"> </span></button>
+                                <button id="bElim" type="button" class="btn btn-sm btn-default" onclick="rowElim(this);"><span class="glyphicon glyphicon-trash"> </span></button>
+                                <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowAcep(this);"><span class="glyphicon glyphicon-ok"> </span></button>
+                                <button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowCancel(this);"><span class="glyphicon glyphicon-remove"> </span></button>
+                            </div>
+                        </td>
+                      </tr>
+                      <tr class="danger">
+                        <td>Danger</td>
+                        <td>Moe</td>
+                        <td>john@example.com</td>
+                        <td>0778213648</td>
+                        <td name="buttons">
+                            <div class="btn-group pull-right">
+                                <button id="bEdit" type="button" class="btn btn-sm btn-default" onclick="rowEdit(this);"><span class="glyphicon glyphicon-pencil"> </span></button>
+                                <button id="bElim" type="button" class="btn btn-sm btn-default" onclick="rowElim(this);"><span class="glyphicon glyphicon-trash"> </span></button>
+                                <button id="bAcep" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowAcep(this);"><span class="glyphicon glyphicon-ok"> </span></button>
+                                <button id="bCanc" type="button" class="btn btn-sm btn-default" style="display:none;" onclick="rowCancel(this);"><span class="glyphicon glyphicon-remove"> </span></button>
+                            </div>
+                        </td><table class="table" id="makeEditable">
+                      </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div><br>
+    <!--Table End-->
 
 
 <!-- footer start -->
@@ -321,6 +462,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/mail-script.js"></script>
 
+    <!--Tabel JS-->
+    <script  src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+    <script src="js/bootstable.min.js"></script>
 
     <script src="js/main.js"></script>
     <script>
@@ -340,8 +484,157 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     	$(document).ready(function() {
     	$('.js-example-basic-multiple').select2();
 		});
+    </script>
 
-   </script>
+
+<!--Form Validation-->
+    <!--<script>
+        $(document).ready(function()
+        {
+            if($("#alertSuccess").text().trim() == "")
+            {
+                $("#alertSuccess").hide();
+            }
+            
+            $("#alertError").hide();
+        });
+
+        //SAVE
+        $(document).on("click", "#btnsubmit", function(event)
+        {
+            $("#alertSuccess").text("");
+            $("#alertSuccess").hide();
+            $("#alertError").text("");
+            $("#alertError").hide();
+
+            //Form validatin
+            var status = validateForm();
+
+            //If not valid
+            if(status != true)
+            {
+                $("#alertError").text(status);
+                $("#alertError").show();
+                return;
+            }
+
+            //If valid
+            var doctor = getDoctorTable($("#docID").val().trim(), $("#docName").val().trim(), $("#ddlSpecialization").val(), $("#docContactNo").val().trim(), $("#docPassword").val().trim());
+            $("#tableDoctor").append(doctor);
+
+            $("#alertSuccess").text("Saved Successfully.");
+            $("#alertSuccess").show();
+            $("#formDoctor").submit();
+            $("#formDoctor")[0].reset();
+        });
+
+        //REMOVE
+        /*$(document).on("click", ".remove", function(event)
+        {
+
+
+            $("#alertSuccess").text("Removed Successfully.");
+            $("#alertSuccess").show();
+        });*/
+
+        //CLIENT-MODEL
+        function validateForm()
+        {
+            if($("#docID").val().trim() == "")
+            {
+                return "Enter Doctor ID !";
+            }
+
+            if($("#docName").val().trim() == "")
+            {
+                return "Enter Doctor Name !";
+            }
+
+            if($("#ddlSpecialization").val() == "0")
+            {
+                return "- Select Specialization -";
+            }
+
+            if($("#docContactNo").val().trim() == "")
+            {
+                return "Enter Contact Number !";
+            }
+
+            var contactNo = $("#docContactNo").val().trim();
+            if(!$.isNumeric(contactNo))
+            {
+                return "Please Enter valid Phone Number !";
+            }
+
+            if($("#docPassword").val().trim() == "")
+            {
+                return "Enter Password !";
+            }
+
+            return true;
+        }
+
+
+        function getDoctorTable(docID, docName, specialization, docContactNo, docPassword)
+        {
+            var specializationNo = "";
+
+            switch(specialization)
+            {
+                case "1":
+                    specializationNo = "CARDILOGIST";
+                    break;
+                case "2":
+                    specializationNo = "NEUROLOGY";
+                    break;
+                case "3":
+                    specializationNo = "DERMATOLOGIST";
+                    break;
+                case "4":
+                    specializationNo = "SURGEON";
+                    break;
+                case "5":
+                    specializationNo = "OPHTHALMOLOGIST";
+                    break;
+            }
+
+            var doctor = "";
+
+
+            return doctor;
+        }
+        
+
+
+
+    </script>-->
+
+
+
+<!--API methods-->
+    <!--<script>
+
+        $(function ()
+        {
+            var $doctors = $("#doctrs");
+
+            $.ajax({
+                type: 'GET',
+                url: '/healthCareApiProject/webapi/doctors',
+                success: function(doctors){
+                    $.each(doctors, function(i, Doctor){
+                        $doctors.append('<li>ID: '+ Doctor.docID +', Name: '+ Doctor.docName +', Specialization: '+ Doctor.specialization +', Contact No: '+ Doctor.docContactNo +'</li>');
+                    });
+
+                }
+
+            });
+
+
+        });
+
+
+    </script>-->
 
     <!--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>

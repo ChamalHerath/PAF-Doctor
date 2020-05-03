@@ -9,12 +9,12 @@ import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-@Provider
+/*@Provider
 public class SecurityFilter implements ContainerRequestFilter{
 
 	private static final String AUTHORIZATION_HEADER_KEY = "Authorization";
 	private static final String AUTHORIZATION_HEADER_PREFIX = "Basic ";
-	private static final String SECURED_URL_PREFIX = "doctors";
+	private static final String SECURED_URL_PREFIX = "";
 	
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
@@ -50,4 +50,4 @@ public class SecurityFilter implements ContainerRequestFilter{
 	}
 
 	
-}
+}*/
