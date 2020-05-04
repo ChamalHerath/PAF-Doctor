@@ -186,17 +186,15 @@ function View( no) {
 				$('#editBox1').val(data.docID);
                 $('#editBox2').val(data.docName);
                 $('#ddlSpecialization').val(data.specialization)
-				$('#editBox3').val(ddata.contactNo);
+				$('#editBox3').val(data.contactNo);
 				
 			}
 	});
-	
-	
-	
+		
 }
 
 
-function Update(){
+/*function Update(){
 	var no = $('#editBox1').text();
 	console.log(no);
 	var obj = {
@@ -227,7 +225,7 @@ function Update(){
 				  alert(xhr.responseText);
 				}
 	});
-}
+}*/
 
 
 function myFunction2( no) {
@@ -236,7 +234,7 @@ function myFunction2( no) {
 }
 
 
-function Delete() {
+/*function Delete() {
 	var no = $('#docID').text();
 	console.log(no);
 	$.ajax({	
@@ -251,4 +249,4 @@ function Delete() {
 				  alert(xhr.responseText);
 				}
 	});
-}
+}*/

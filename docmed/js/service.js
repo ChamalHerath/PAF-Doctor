@@ -1,3 +1,4 @@
+//Insert
 function saveNewRecord(obj){
     $.ajax({	
         headers: { 
@@ -11,7 +12,7 @@ function saveNewRecord(obj){
         success: function(){
             //$( "#feeds" ).load( "doctor.html" );
             console.log("Added"); 
-            $("#alertSuccess").text("Saved Successfully.");
+            $("#alertSuccess").text("Inserted Successfully!");
             $("#alertSuccess").show();
             $("#formDoctor")[0].reset();
             fetchResult();
@@ -24,6 +25,7 @@ function saveNewRecord(obj){
 }
 
 
+//View
 function fetchResult(){
     var $details = $('#tbl');
     $("#tbl").empty();
@@ -60,7 +62,8 @@ function fetchResult(){
 }
 
 
-/*function UpdateResult(){
+//Update
+function UpdateResult(){
 	var no = $('#editBox1').text();
 	console.log(no);
 	var obj = {
@@ -83,7 +86,6 @@ function fetchResult(){
 			data : JSON.stringify(obj),
 			
 			success: function(){
-				//$( "#feeds" ).load( "feeds.html" );
 				alert("Updated Successfully!");
 				
 			},
@@ -91,4 +93,23 @@ function fetchResult(){
 				  alert(xhr.responseText);
 				}
 	});
-}*/
+}
+
+
+//Delete
+function DeleteResult() {
+	var no = $('#docID').text();
+	console.log(no);
+	$.ajax({	
+		type: 'DELETE',
+			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/delete/'+no,
+			dataType: 'json',			
+			success: function(){
+                console.log("Deleted");
+                alert("Deleted Successfully!");
+			},
+			error: function(xhr, status, error) {
+				  alert(xhr.responseText);
+				}
+	});
+}
