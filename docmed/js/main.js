@@ -1,385 +1,254 @@
-(function ($) {
-"use strict";
-// TOP Menu Sticky
-$(window).on('scroll', function () {
-	var scroll = $(window).scrollTop();
-	if (scroll < 400) {
-    $("#sticky-header").removeClass("sticky");
-    $('#back-top').fadeIn(500);
-	} else {
-    $("#sticky-header").addClass("sticky");
-    $('#back-top').fadeIn(500);
-	}
-});
+var $details = $('#tbl');
+
+var docID1 =  $('#docID');
+var docName1 =  $('#docName');
+var ddlSpecialization1 =  $('#ddlSpecialization');
+var docContactNo1 =  $('#docContactNo');
+var docPassword1 = 	 $('#docPassword');
 
 
-$(document).ready(function(){
-
-// mobile_menu
-var menu = $('ul#navigation');
-if(menu.length){
-	menu.slicknav({
-		prependTo: ".mobile_menu",
-		closedSymbol: '+',
-		openedSymbol:'-'
-	});
-};
-// blog-menu
-  // $('ul#blog-menu').slicknav({
-  //   prependTo: ".blog_menu"
-  // });
-
-// review-active
-$('.slider_active').owlCarousel({
-  loop:true,
-  margin:0,
-items:1,
-autoplay:true,
-navText:['<i class="ti-angle-left"></i>','<i class="ti-angle-right"></i>'],
-  nav:true,
-dots:false,
-autoplayHoverPause: true,
-autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          nav:false,
-      },
-      767:{
-          items:1,
-          nav:false,
-      },
-      992:{
-          items:1,
-          nav:false
-      },
-      1200:{
-          items:1,
-          nav:false
-      },
-      1600:{
-          items:1,
-          nav:true
-      }
-  }
-});
-
-// review-active
-$('.testmonial_active').owlCarousel({
-  loop:true,
-  margin:0,
-items:1,
-autoplay:true,
-navText:['<i class="ti-angle-left"></i>','<i class="ti-angle-right"></i>'],
-  nav:true,
-dots:false,
-autoplayHoverPause: true,
-autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          dots:false,
-          nav:false,
-      },
-      767:{
-          items:1,
-          dots:false,
-          nav:false,
-      },
-      992:{
-          items:1,
-          nav:false
-      },
-      1200:{
-          items:1,
-          nav:false
-      },
-      1500:{
-          items:1
-      }
-  }
-});
-
-// review-active
-$('.expert_active').owlCarousel({
-  loop:true,
-  margin:30,
-items:1,
-autoplay:true,
-navText:['<i class="ti-angle-left"></i>','<i class="ti-angle-right"></i>'],
-  nav:true,
-dots:false,
-autoplayHoverPause: true,
-autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          nav:false
-      },
-      767:{
-          items:2,
-          nav:false
-      },
-      992:{
-          items:3
-      },
-      1200:{
-          items:4
-      },
-      1500:{
-          items:4
-      }
-  }
-});
-
-// for filter
-  // init Isotope
-  var $grid = $('.grid').isotope({
-    itemSelector: '.grid-item',
-    percentPosition: true,
-    masonry: {
-      // use outer width of grid-sizer for columnWidth
-      columnWidth: 1
+function validateForm()
+{
+    if($("#docID").val().trim() == "")
+    {
+        return "Enter Doctor ID !";
     }
-  });
 
-  // filter items on button click
-  $('.portfolio-menu').on('click', 'button', function () {
-    var filterValue = $(this).attr('data-filter');
-    $grid.isotope({ filter: filterValue });
-  });
+    if($("#docName").val().trim() == "")
+    {
+        return "Enter Doctor Name !";
+    }
 
-  //for menu active class
-  $('.portfolio-menu button').on('click', function (event) {
-    $(this).siblings('.active').removeClass('active');
-    $(this).addClass('active');
-    event.preventDefault();
-	});
-  
-  // wow js
-  new WOW().init();
+    if($("#ddlSpecialization").val() == "0")
+    {
+        return "- Select Specialization -";
+    }
 
-  // counter 
-  $('.counter').counterUp({
-    delay: 10,
-    time: 10000
-  });
+    if($("#docContactNo").val().trim() == "")
+    {
+        return "Enter Contact Number !";
+    }
 
-/* magnificPopup img view */
-$('.popup-image').magnificPopup({
-	type: 'image',
-	gallery: {
-	  enabled: true
-	}
-});
+    var contactNo = $("#docContactNo").val().trim();
+    if(!$.isNumeric(contactNo))
+    {
+        return "Please Enter valid Phone Number !";
+    }
 
-/* magnificPopup img view */
-$('.img-pop-up').magnificPopup({
-	type: 'image',
-	gallery: {
-	  enabled: true
-	}
-});
+    if($("#docPassword").val().trim() == "")
+    {
+        return "Enter Password !";
+    }
 
-/* magnificPopup video view */
-$('.popup-video').magnificPopup({
-	type: 'iframe'
-});
+    
 
-
-  // scrollIt for smoth scroll
-  $.scrollIt({
-    upKey: 38,             // key code to navigate to the next section
-    downKey: 40,           // key code to navigate to the previous section
-    easing: 'linear',      // the easing function for animation
-    scrollTime: 600,       // how long (in ms) the animation takes
-    activeClass: 'active', // class given to the active nav element
-    onPageChange: null,    // function(pageIndex) that is called when page is changed
-    topOffset: 0           // offste (in px) for fixed top navigation
-  });
-
-  // scrollup bottom to top
-  $.scrollUp({
-    scrollName: 'scrollUp', // Element ID
-    topDistance: '4500', // Distance from top before showing element (px)
-    topSpeed: 300, // Speed back to top (ms)
-    animation: 'fade', // Fade, slide, none
-    animationInSpeed: 200, // Animation in speed (ms)
-    animationOutSpeed: 200, // Animation out speed (ms)
-    scrollText: '<i class="fa fa-angle-double-up"></i>', // Text for element
-    activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
-  });
-
-
-  // blog-page
-
-  //brand-active
-$('.brand-active').owlCarousel({
-  loop:true,
-  margin:30,
-items:1,
-autoplay:true,
-  nav:false,
-dots:false,
-autoplayHoverPause: true,
-autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          nav:false
-
-      },
-      767:{
-          items:4
-      },
-      992:{
-          items:7
-      }
-  }
-});
-
-// blog-dtails-page
-
-  //project-active
-$('.project-active').owlCarousel({
-  loop:true,
-  margin:30,
-items:1,
-// autoplay:true,
-navText:['<i class="Flaticon flaticon-left-arrow"></i>','<i class="Flaticon flaticon-right-arrow"></i>'],
-nav:true,
-dots:false,
-// autoplayHoverPause: true,
-// autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          nav:false
-
-      },
-      767:{
-          items:1,
-          nav:false
-      },
-      992:{
-          items:2,
-          nav:false
-      },
-      1200:{
-          items:1,
-      },
-      1501:{
-          items:2,
-      }
-  }
-});
-
-if (document.getElementById('default-select')) {
-  $('select').niceSelect();
+    return true;
 }
 
-  //about-pro-active
-$('.details_active').owlCarousel({
-  loop:true,
-  margin:0,
-items:1,
-// autoplay:true,
-navText:['<i class="ti-angle-left"></i>','<i class="ti-angle-right"></i>'],
-nav:true,
-dots:false,
-// autoplayHoverPause: true,
-// autoplaySpeed: 800,
-  responsive:{
-      0:{
-          items:1,
-          nav:false
 
-      },
-      767:{
-          items:1,
-          nav:false
-      },
-      992:{
-          items:1,
-          nav:false
-      },
-      1200:{
-          items:1,
-      }
-  }
-});
+function Validation(specialization)
+{
+    var specializationNo = "";
 
-});
+    switch(specialization)
+    {
+        case "1":
+            specializationNo = "CARDILOGIST";
+            break;
+        case "2":
+            specializationNo = "NEUROLOGY";
+            break;
+        case "3":
+            specializationNo = "DERMATOLOGIST";
+            break;
+        case "4":
+            specializationNo = "SURGEON";
+            break;
+        case "5":
+            specializationNo = "OPHTHALMOLOGIST";
+            break;
+    }
 
-// resitration_Form
-$(document).ready(function() {
-	$('.popup-with-form').magnificPopup({
-		type: 'inline',
-		preloader: false,
-		focus: '#name',
+    var doctor = "";
 
-		// When elemened is focused, some mobile browsers in some cases zoom in
-		// It looks not nice, so we disable it:
-		callbacks: {
-			beforeOpen: function() {
-				if($(window).width() < 700) {
-					this.st.focus = false;
-				} else {
-					this.st.focus = '#name';
-				}
+
+    return doctor;
+}
+
+
+
+
+/*$("#btnsubmit").on('click' , function(){
+	if(dName1.val() == ""){
+		$('#box').css('visibility','visible');
+		$('#msg').text("Please insert the Doctor Name");
+	}
+	else if(patName1.val() == ""){
+		$('#box').css('visibility','visible');
+		$('#msg').text("Please insert the Patient Name");
+	}
+	else if(date1.val() == ""){
+		$('#box').css('visibility','visible');
+		$('#msg').text("Please insert the Date");
+	}
+	else if(time1.val() == ""){
+		$('#box').css('visibility','visible');
+		$('#msg').text("Please insert the Time");
+	}
+	else if(location1.val() == ""){
+		$('#box').css('visibility','visible');
+		$('#msg').text("Please insert the Hospital Name");
+	}
+	else {
+		$('#box').css('visibility','hidden');
+		var obj = {
+				
+				docID : docID1.val(),
+				docName :  docName1.val(),
+				specialization :  ddlSpecialization1.val(),
+				contactNo :  docContactNo1.val(),
+				password : 	 docPassword1.val(),
+		};
+		var json = JSON.stringify(obj);
+		console.log(json);
+		$.ajax({	
+			headers: { 
+				'Accept': 'application/json',
+				'Content-Type': 'application/json' 
+			},
+			type: 'POST',
+			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/insert',
+			dataType: 'json',
+			
+			data : JSON.stringify(obj),
+			
+			success: function(){
+				$( "#feeds" ).load( "doctor.html" );
+				alert("Appointment Added Successfully!");
+				console.log("Added");
+			},
+			error: function(xhr, status, error) {
+				alert(xhr.responseText);
 			}
-		}
-	});
-});
-
-
-
-//------- Mailchimp js --------//  
-function mailChimp() {
-  $('#mc_embed_signup').find('form').ajaxChimp();
-}
-mailChimp();
-
-
-
-        // Search Toggle
-        $("#search_input_box").hide();
-        $("#search").on("click", function () {
-            $("#search_input_box").slideToggle();
-            $("#search_input").focus();
-        });
-        $("#close_search").on("click", function () {
-            $('#search_input_box').slideUp(500);
-        });
-        // Search Toggle
-        $("#search_input_box").hide();
-        $("#search_1").on("click", function () {
-            $("#search_input_box").slideToggle();
-            $("#search_input").focus();
-        });
-
-})(jQuery);	
-
-
-
-//Login Form
-const inputs = document.querySelectorAll(".input");
-
-
-function addcl(){
-	let parent = this.parentNode.parentNode;
-	parent.classList.add("focus");
-}
-
-function remcl(){
-	let parent = this.parentNode.parentNode;
-	if(this.value == ""){
-		parent.classList.remove("focus");
+		});
+		
 	}
+});
+
+$( "#feeds" ).load( "doctor.html" );*/
+
+
+
+/*<!--API methods-->*/
+//CRUD
+function ViewAll (){
+	console.log("called");
+	
+	var $details = $('#tbl');
+	$.ajax({
+		type: 'GET',
+			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors',
+			 dataType: "json",
+			success: function(data){
+				$.each(data , function(i , data){
+					$details.append('<tr>'+
+							'<td>' + data.docID + '</td>' 
+							+ '<td>' + data.docName + '</td>' 
+							+ '<td>' + data.specialization + '</td>' 
+							+ '<td>' + data.contactNo + '</td>'	
+							+ '<td><button type="button" class="btn btn-info" onclick="View('+ data.docID +' )"  data-toggle="modal" data-target="#myModal">Edit</button></td>'
+						    + '<td><button type="button" class="btn btn-danger" onclick="myFunction2('+ data.docID +' )" data-toggle="modal" data-target="#exampleModal" >Delete</button></td>'
+							+ '</tr>')
+				});
+            },
+            error: function(){
+                alert('error loading orders');
+            }
+	});
 }
 
 
-inputs.forEach(input => {
-	input.addEventListener("focus", addcl);
-	input.addEventListener("blur", remcl);
-});
+ViewAll ();
+
+
+	
+function View( no) {
+	console.log(no);
+	$('#editBox1').text(no);
+	
+	$.ajax({
+		type: 'GET',
+			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/view/'+no,
+			 dataType: "json",
+			success: function(data){
+                //$('.modal-backdrop').remove();
+				console.log(data);
+				$('#editBox1').val(data.docID);
+                $('#editBox2').val(data.docName);
+                $('#ddlSpecialization').val(data.specialization)
+				$('#editBox3').val(ddata.contactNo);
+				
+			}
+	});
+	
+	
+	
+}
+
+
+function Update(){
+	var no = $('#editBox1').text();
+	console.log(no);
+	var obj = {
+		
+			 	docID: no,
+		        docID:  $('#editBox1').val(),
+		        docName:  $('#editBox2').val(),
+		        specialization:  $('#ddlSpecialization').val(),
+		        contactNo:  $('#editBox3').val()
+	};
+	$.ajax({	
+		 headers: { 
+		        'Accept': 'application/json',
+		        'Content-Type': 'application/json' 
+		    },
+		type: 'PUT',
+			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/update',
+			dataType: 'json',
+			
+			data : JSON.stringify(obj),
+			
+			success: function(){
+				//$( "#feeds" ).load( "feeds.html" );
+				alert("Updated Successfully!");
+				
+			},
+			error: function(xhr, status, error) {
+				  alert(xhr.responseText);
+				}
+	});
+}
+
+
+function myFunction2( no) {
+	$('#docID').text(no);
+		
+}
+
+
+function Delete() {
+	var no = $('#docID').text();
+	console.log(no);
+	$.ajax({	
+		type: 'DELETE',
+			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/delete/'+no,
+			dataType: 'json',			
+			success: function(){
+				//$( "#feeds" ).load( "feeds.html" );
+				console.log("Deleted");
+			},
+			error: function(xhr, status, error) {
+				  alert(xhr.responseText);
+				}
+	});
+}
