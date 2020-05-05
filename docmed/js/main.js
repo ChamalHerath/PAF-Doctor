@@ -77,69 +77,6 @@ function Validation(specialization)
 
 
 
-
-/*$("#btnsubmit").on('click' , function(){
-	if(dName1.val() == ""){
-		$('#box').css('visibility','visible');
-		$('#msg').text("Please insert the Doctor Name");
-	}
-	else if(patName1.val() == ""){
-		$('#box').css('visibility','visible');
-		$('#msg').text("Please insert the Patient Name");
-	}
-	else if(date1.val() == ""){
-		$('#box').css('visibility','visible');
-		$('#msg').text("Please insert the Date");
-	}
-	else if(time1.val() == ""){
-		$('#box').css('visibility','visible');
-		$('#msg').text("Please insert the Time");
-	}
-	else if(location1.val() == ""){
-		$('#box').css('visibility','visible');
-		$('#msg').text("Please insert the Hospital Name");
-	}
-	else {
-		$('#box').css('visibility','hidden');
-		var obj = {
-				
-				docID : docID1.val(),
-				docName :  docName1.val(),
-				specialization :  ddlSpecialization1.val(),
-				contactNo :  docContactNo1.val(),
-				password : 	 docPassword1.val(),
-		};
-		var json = JSON.stringify(obj);
-		console.log(json);
-		$.ajax({	
-			headers: { 
-				'Accept': 'application/json',
-				'Content-Type': 'application/json' 
-			},
-			type: 'POST',
-			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/insert',
-			dataType: 'json',
-			
-			data : JSON.stringify(obj),
-			
-			success: function(){
-				$( "#feeds" ).load( "doctor.html" );
-				alert("Appointment Added Successfully!");
-				console.log("Added");
-			},
-			error: function(xhr, status, error) {
-				alert(xhr.responseText);
-			}
-		});
-		
-	}
-});
-
-$( "#feeds" ).load( "doctor.html" );*/
-
-
-
-/*<!--API methods-->*/
 //CRUD
 function ViewAll (){
 	console.log("called");
@@ -185,7 +122,14 @@ function View( no) {
 				console.log(data);
 				$('#editBox1').val(data.docID);
                 $('#editBox2').val(data.docName);
-                $('#ddlSpecialization').val(data.specialization)
+                $('#ddlSpecialization').val(data.specialization);
+
+                $("#ddlSpecialization option").each(function() {
+                    if($(this).text() == data.specialization) {
+                      $(this).attr('selected', 'selected');            
+                    }                        
+                  });
+
 				$('#editBox3').val(data.contactNo);
 				
 			}
@@ -193,60 +137,7 @@ function View( no) {
 		
 }
 
-
-/*function Update(){
-	var no = $('#editBox1').text();
-	console.log(no);
-	var obj = {
-		
-			 	docID: no,
-		        docID:  $('#editBox1').val(),
-		        docName:  $('#editBox2').val(),
-		        specialization:  $('#ddlSpecialization').val(),
-		        contactNo:  $('#editBox3').val()
-	};
-	$.ajax({	
-		 headers: { 
-		        'Accept': 'application/json',
-		        'Content-Type': 'application/json' 
-		    },
-		type: 'PUT',
-			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/update',
-			dataType: 'json',
-			
-			data : JSON.stringify(obj),
-			
-			success: function(){
-				//$( "#feeds" ).load( "feeds.html" );
-				alert("Updated Successfully!");
-				
-			},
-			error: function(xhr, status, error) {
-				  alert(xhr.responseText);
-				}
-	});
-}*/
-
-
 function myFunction2( no) {
 	$('#docID').text(no);
 		
 }
-
-
-/*function Delete() {
-	var no = $('#docID').text();
-	console.log(no);
-	$.ajax({	
-		type: 'DELETE',
-			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/delete/'+no,
-			dataType: 'json',			
-			success: function(){
-				//$( "#feeds" ).load( "feeds.html" );
-				console.log("Deleted");
-			},
-			error: function(xhr, status, error) {
-				  alert(xhr.responseText);
-				}
-	});
-}*/

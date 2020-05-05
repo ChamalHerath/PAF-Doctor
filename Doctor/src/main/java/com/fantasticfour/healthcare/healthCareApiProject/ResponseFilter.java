@@ -1,4 +1,4 @@
-package com.fantasticfour.healthcare.healthCareApiProject;
+/*package com.fantasticfour.healthcare.healthCareApiProject;
 
 import java.io.IOException;
 
@@ -17,4 +17,4 @@ public class ResponseFilter implements ContainerResponseFilter{
 		
 	}
 
-}    
+}*/    

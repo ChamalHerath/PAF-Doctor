@@ -1,3 +1,4 @@
+/*<!--API methods-->*/
 //Insert
 function saveNewRecord(obj){
     $.ajax({	
@@ -71,7 +72,7 @@ function UpdateResult(){
 			 	docID: no,
 		        docID:  $('#editBox1').val(),
 		        docName:  $('#editBox2').val(),
-		        specialization:  $('#ddlSpecialization').val(),
+		        specialization:  $("#ddlSpecialization option:selected").text(),
 		        contactNo:  $('#editBox3').val()
 	};
 	$.ajax({	
@@ -86,7 +87,18 @@ function UpdateResult(){
 			data : JSON.stringify(obj),
 			
 			success: function(){
-				alert("Updated Successfully!");
+                $.toast({ 
+                    text : "Updated Successfully!", 
+                    showHideTransition : 'fade',  
+                    bgColor : 'green',              
+                    textColor : '#eee',           
+                    allowToastClose : false,       
+                    hideAfter : 1800,             
+                    stack : 5,                   
+                    textAlign : 'center',          
+                    position : 'top-right'      
+                  });
+                fetchResult();
 				
 			},
 			error: function(xhr, status, error) {
@@ -106,7 +118,18 @@ function DeleteResult() {
 			dataType: 'json',			
 			success: function(){
                 console.log("Deleted");
-                alert("Deleted Successfully!");
+                fetchResult();
+                $.toast({ 
+                    text : "Deleted Successfully!", 
+                    showHideTransition : 'fade',  
+                    bgColor : 'red',              
+                    textColor : '#eee',            
+                    allowToastClose : false,      
+                    hideAfter : 1800,            
+                    stack : 5,                    
+                    textAlign : 'center',          
+                    position : 'top-right'      
+                  });
 			},
 			error: function(xhr, status, error) {
 				  alert(xhr.responseText);

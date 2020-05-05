@@ -7,13 +7,11 @@
     <title>Doctors</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     
     <!-- CSS here -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery.toast.min.css">
     
 
 </head>
@@ -130,11 +128,11 @@
 			          <button type="button" class="close" data-dismiss="modal">&times;</button>
 			         
 			        </div>
-			        <div class="modal-body">
+			        <div class="modal-body" style="background: lightgrey;">
 
 				          <div class="form-group">
 						    <label for="exampleInputEmail1" id="editBoxAppH">Doctor ID:</label> <br>
-						    <input type="text" class="form-control" id="editBox1" aria-describedby="emailHelp"> 
+						    <input type="text" class="form-control" id="editBox1" aria-describedby="emailHelp" maxlength="6"> 
 						  </div>
 
 				          <div class="form-group">
@@ -156,7 +154,7 @@
 
 						  <div class="form-group">
 						    <label for="exampleInputEmail1">Contact No:</label>
-						    <input type="tel" class="form-control" id="editBox3" aria-describedby="emailHelp"> 
+						    <input type="tel" class="form-control" id="editBox3" aria-describedby="emailHelp" maxlength="10" required pattern="[0]{1}[0-9]{9}"> 
 						  </div>
 
 						  <!--<div class="form-group">
@@ -185,12 +183,12 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" style="background: lightgrey;">
                          <p class="text-danger">Are you sure want to delete this Doctor....?</p> <label for="exampleInputEmail1" id="docID" style="visibility: hidden;">Doctor Name</label> 
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                      <button type="button" class="btn btn-danger" onclick="Delete()" data-dismiss="modal" >Yes</button>
+                      <button type="button" class="btn btn-danger" onclick="DeleteResult()" data-dismiss="modal" >Yes</button>
                     </div>
                   </div>
                 </div>
@@ -208,6 +206,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="js/service.js"></script>
+    <script src="js/jquery.toast.min.js"></script>
     
 
 <!--Form Validation Called-->

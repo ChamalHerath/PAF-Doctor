@@ -1,4 +1,4 @@
- package com.fantasticfour.healthcare.healthCareApiProject;
+package com.fantasticfour.healthcare.healthCareApiProject;
 
 
 import java.util.List;
