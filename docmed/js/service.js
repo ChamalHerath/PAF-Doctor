@@ -1,3 +1,10 @@
+function _URL()
+{ 
+    return "http://localhost:8080/";
+};
+
+
+/*<!--Controller--------------------------------------------------------->*/
 /*<!--API methods-->*/
 //Insert
 function saveNewRecord(obj){
@@ -6,12 +13,11 @@ function saveNewRecord(obj){
             "Content-Type": "application/json"
         },
         type: 'POST',
-        url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/insert',
+        url: _URL()+'healthCareApiProject/webapi/doctors/insert',
         dataType: 'json',
         data : JSON.stringify(obj),
         
         success: function(){
-            //$( "#feeds" ).load( "doctor.html" );
             console.log("Added"); 
             $("#alertSuccess").text("Inserted Successfully!");
             $("#alertSuccess").show();
@@ -26,6 +32,7 @@ function saveNewRecord(obj){
 }
 
 
+
 //View
 function fetchResult(){
     var $details = $('#tbl');
@@ -35,7 +42,7 @@ function fetchResult(){
             "Content-Type": "application/json"
         },
         type: 'GET',
-        url: 'http://localhost:8080/healthCareApiProject/webapi/doctors',
+        url: _URL()+'healthCareApiProject/webapi/doctors',
         dataType: 'json',
         success: function(result){
             console.log("fetched");
@@ -63,6 +70,36 @@ function fetchResult(){
 }
 
 
+function View( no) {
+	console.log(no);
+	$('#editBox1').text(no);
+	
+	$.ajax({
+		type: 'GET',
+			url: _URL()+'healthCareApiProject/webapi/doctors/view/'+no,
+			 dataType: "json",
+			success: function(data){
+                //$('.modal-backdrop').remove();
+				console.log(data);
+				$('#editBox1').val(data.docID);
+                $('#editBox2').val(data.docName);
+                $('#ddlSpecialization1').val(data.specialization);
+
+                $("#ddlSpecialization1 option").each(function() {
+                    if($(this).text() == data.specialization) {
+                      $(this).attr('selected', 'selected');            
+                    }                        
+                  });
+
+				$('#editBox3').val(data.contactNo);
+				
+			}
+	});
+		
+}
+
+
+
 //Update
 function UpdateResult(){
 	var no = $('#editBox1').text();
@@ -72,7 +109,7 @@ function UpdateResult(){
 			 	docID: no,
 		        docID:  $('#editBox1').val(),
 		        docName:  $('#editBox2').val(),
-		        specialization:  $("#ddlSpecialization option:selected").text(),
+		        specialization:  $("#ddlSpecialization1 option:selected").text(),
 		        contactNo:  $('#editBox3').val()
 	};
 	$.ajax({	
@@ -81,7 +118,7 @@ function UpdateResult(){
 		        'Content-Type': 'application/json' 
 		    },
 		type: 'PUT',
-			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/update',
+			url: _URL()+'healthCareApiProject/webapi/doctors/update',
 			dataType: 'json',
 			
 			data : JSON.stringify(obj),
@@ -93,7 +130,7 @@ function UpdateResult(){
                     bgColor : 'green',              
                     textColor : '#eee',           
                     allowToastClose : false,       
-                    hideAfter : 1800,             
+                    hideAfter : 1600,             
                     stack : 5,                   
                     textAlign : 'center',          
                     position : 'top-right'      
@@ -114,7 +151,7 @@ function DeleteResult() {
 	console.log(no);
 	$.ajax({	
 		type: 'DELETE',
-			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/delete/'+no,
+			url: _URL()+'healthCareApiProject/webapi/doctors/delete/'+no,
 			dataType: 'json',			
 			success: function(){
                 console.log("Deleted");
@@ -125,7 +162,7 @@ function DeleteResult() {
                     bgColor : 'red',              
                     textColor : '#eee',            
                     allowToastClose : false,      
-                    hideAfter : 1800,            
+                    hideAfter : 1600,            
                     stack : 5,                    
                     textAlign : 'center',          
                     position : 'top-right'      
@@ -135,4 +172,10 @@ function DeleteResult() {
 				  alert(xhr.responseText);
 				}
 	});
+}
+
+
+function myFunction2( no) {
+	$('#docID').text(no);
+		
 }

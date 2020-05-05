@@ -88,7 +88,6 @@
                     <div id="alertError" class="alert alert-danger"></div><br>
 
                     &nbsp; &nbsp;<button type="button" id="btnsubmit" class="boxed-btn31">Create Doctor</button>
-                    <!--&nbsp; &nbsp;<input type="hidden" id="hidbtnsubmit" name="hidbtnsubmit" value="">-->
 				</form>
     		</div>
     		<div class="col-md-3"></div>
@@ -142,7 +141,7 @@
 
 						  <div class="form-group">
 						    <label for="exampleInputEmail1">Specialization:</label>
-							    <select class="form-control" id="ddlSpecialization" name="ddlSpecialization" required>
+							    <select class="form-control" id="ddlSpecialization1" name="ddlSpecialization" required>
 		                            <option value="0">- Select Specialization -</option>
 		                            <option value="1">CARDILOGIST</option>
 		                            <option value="2">NEUROLOGY</option>
@@ -156,11 +155,6 @@
 						    <label for="exampleInputEmail1">Contact No:</label>
 						    <input type="tel" class="form-control" id="editBox3" aria-describedby="emailHelp" maxlength="10" required pattern="[0]{1}[0-9]{9}"> 
 						  </div>
-
-						  <!--<div class="form-group">
-						    <label for="exampleInputEmail1">Password</label>
-						    <input type="Password" class="form-control" id="editBox4" aria-describedby="emailHelp"> 
-						  </div>-->
 					  
 			        </div>
 
@@ -178,13 +172,13 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Deleting Doctor</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">Delete this Doctor ?</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <div class="modal-body" style="background: lightgrey;">
-                         <p class="text-danger">Are you sure want to delete this Doctor....?</p> <label for="exampleInputEmail1" id="docID" style="visibility: hidden;">Doctor Name</label> 
+                    <div class="modal-body">
+                         <p class="text-danger">Are you sure ?</p> <label for="exampleInputEmail1" id="docID" style="visibility: hidden;">Doctor Name</label> 
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>

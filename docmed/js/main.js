@@ -1,3 +1,5 @@
+/*<!--Client-Model--------------------------------------------------------->*/
+
 var $details = $('#tbl');
 
 var docID1 =  $('#docID');
@@ -73,71 +75,4 @@ function Validation(specialization)
 
 
     return doctor;
-}
-
-
-
-//CRUD
-function ViewAll (){
-	console.log("called");
-	
-	var $details = $('#tbl');
-	$.ajax({
-		type: 'GET',
-			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors',
-			 dataType: "json",
-			success: function(data){
-				$.each(data , function(i , data){
-					$details.append('<tr>'+
-							'<td>' + data.docID + '</td>' 
-							+ '<td>' + data.docName + '</td>' 
-							+ '<td>' + data.specialization + '</td>' 
-							+ '<td>' + data.contactNo + '</td>'	
-							+ '<td><button type="button" class="btn btn-info" onclick="View('+ data.docID +' )"  data-toggle="modal" data-target="#myModal">Edit</button></td>'
-						    + '<td><button type="button" class="btn btn-danger" onclick="myFunction2('+ data.docID +' )" data-toggle="modal" data-target="#exampleModal" >Delete</button></td>'
-							+ '</tr>')
-				});
-            },
-            error: function(){
-                alert('error loading orders');
-            }
-	});
-}
-
-
-ViewAll ();
-
-
-	
-function View( no) {
-	console.log(no);
-	$('#editBox1').text(no);
-	
-	$.ajax({
-		type: 'GET',
-			url: 'http://localhost:8080/healthCareApiProject/webapi/doctors/view/'+no,
-			 dataType: "json",
-			success: function(data){
-                //$('.modal-backdrop').remove();
-				console.log(data);
-				$('#editBox1').val(data.docID);
-                $('#editBox2').val(data.docName);
-                $('#ddlSpecialization').val(data.specialization);
-
-                $("#ddlSpecialization option").each(function() {
-                    if($(this).text() == data.specialization) {
-                      $(this).attr('selected', 'selected');            
-                    }                        
-                  });
-
-				$('#editBox3').val(data.contactNo);
-				
-			}
-	});
-		
-}
-
-function myFunction2( no) {
-	$('#docID').text(no);
-		
 }
