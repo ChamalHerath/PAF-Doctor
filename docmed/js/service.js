@@ -46,7 +46,6 @@ function fetchResult(){
         dataType: 'json',
         success: function(result){
             console.log("fetched");
-            //console.log(result);
             
             var data = JSON.parse(JSON.stringify(result));
             $.each(data, function(i, item) {
@@ -79,17 +78,15 @@ function View( no) {
 			url: _URL()+'healthCareApiProject/webapi/doctors/view/'+no,
 			 dataType: "json",
 			success: function(data){
-                //$('.modal-backdrop').remove();
+                
 				console.log(data);
 				$('#editBox1').val(data.docID);
                 $('#editBox2').val(data.docName);
                 $('#ddlSpecialization1').val(data.specialization);
-
-                $("#ddlSpecialization1 option").each(function() {
-                    if($(this).text() == data.specialization) {
-                      $(this).attr('selected', 'selected');            
-                    }                        
-                  });
+                $("#ddlSpecialization1 option").filter(function() {
+                    
+                    return $(this).text() == data.specialization;
+                  }).prop('selected', true);
 
 				$('#editBox3').val(data.contactNo);
 				

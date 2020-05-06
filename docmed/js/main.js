@@ -31,10 +31,15 @@ function validateForm()
         return "Enter Contact Number !";
     }
 
+    if($("#docContactNo").val().trim().length == 9)
+    {
+        return "Contact Number must have 10 digits !";
+    }
+
     var contactNo = $("#docContactNo").val().trim();
     if(!$.isNumeric(contactNo))
     {
-        return "Please Enter valid Phone Number !";
+        return "Please Enter valid Contact Number !";
     }
 
     if($("#docPassword").val().trim() == "")
